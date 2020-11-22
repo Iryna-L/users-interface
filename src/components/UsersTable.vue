@@ -61,4 +61,9 @@ export default {
   padding-top: 16px;
   grid-template-columns: 1fr 1fr 1fr;
 }
+@media(max-width: 800px) {
+.users-table{
+    grid-template-columns: 1fr;
+ }
+}
 </style>
