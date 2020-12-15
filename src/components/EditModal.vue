@@ -13,31 +13,28 @@ import {
   maxLength,
   required,
   minLength,
-  email,
+  email
 } from "vuelidate/lib/validators";
 import Form from './Form.vue'
 
 export default {
-  computed: {
-    
-  },
   components: {
     Form
   },
   validations: {
     name: {
       maxLength: maxLength(250),
-      minLength: minLength(2),
+      minLength: minLength(2)
     },
     username: {
       maxLength: maxLength(30),
-      required,
+      required
     },
     email: {
       email,
       maxLength: maxLength(250),
-      required,
-    },
+      required
+    }
   },
   data () {
     return {
@@ -49,24 +46,24 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => {},
+      default: () => {}
     }
   },
   mounted () {
     this.name = this.user.name
     this.email = this.user.email
-    this.username  = this.user.username
+    this.username = this.user.username
   },
   methods: {
     ...mapActions("usersInfo", ["editUser"]),
-    submitEdit(payload) {
+    submitEdit (payload) {
       const response = this.editUser({ id: this.user.id, payload });
 
       if (response) {
         this.$bvToast.toast(`New user is successfully edited`, {
           title: "Success",
           autoHideDelay: 1000,
-          appendToast: true,
+          appendToast: true
         });
 
         this.handleCloseModal()
@@ -74,7 +71,7 @@ export default {
         this.$bvToast.toast(`Failure in editing`, {
           title: "Failure",
           autoHideDelay: 1000,
-          appendToast: true,
+          appendToast: true
         });
       }
     },
@@ -84,6 +81,6 @@ export default {
       this.email = ''
       this.username = ""
     }
-  },
+  }
 };
 </script>

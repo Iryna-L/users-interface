@@ -53,11 +53,11 @@ import {
   maxLength,
   required,
   minLength,
-  email,
+  email
 } from "vuelidate/lib/validators";
 
 export default {
-  data() {
+  data () {
     return {
       name: "",
       email: "",
@@ -74,16 +74,15 @@ export default {
       default: () => null
     }
   },
-  mounted() {
+  mounted () {
     if (this.userEditable) {
       this.name = this.userEditable.name
       this.username = this.userEditable.username
       this.email = this.userEditable.email
     }
-    
   },
   methods: {
-    handleSubmit() {
+    handleSubmit () {
       this.$v.$touch();
 
       if (this.$v.$invalid) {
@@ -93,7 +92,7 @@ export default {
       const payload = {
         username: this.username,
         name: this.name,
-        email: this.email        
+        email: this.email
       }
 
       this.$emit('submitForm', payload)
@@ -102,20 +101,20 @@ export default {
   validations: {
     name: {
       maxLength: maxLength(250),
-      minLength: minLength(2),
+      minLength: minLength(2)
     },
     username: {
       maxLength: maxLength(30),
-      required,
+      required
     },
     email: {
       email,
       maxLength: maxLength(250),
-      required,
-    },
+      required
+    }
   },
   computed: {
-    nameError() {
+    nameError () {
       if (!this.$v.name.maxLength && this.$v.username.$error) {
         return "Name max length - 250 symbols";
       } else if (!this.$v.name.minLength && this.$v.username.$error) {
@@ -124,7 +123,7 @@ export default {
         return "";
       }
     },
-    userNameError() {
+    userNameError () {
       if (!this.$v.username.maxLength && this.$v.username.$error) {
         return "username max length - 30 symbols";
       } else if (!this.$v.username.required && this.$v.username.$error) {
@@ -133,18 +132,17 @@ export default {
         return "";
       }
     },
-    emailError() {
+    emailError () {
       if (!this.$v.email.maxLength && this.$v.email.$error) {
         return "username max length - 250 symbols";
-      }
-      else if (!this.$v.email.email && this.$v.email.$error) {
+      } else if (!this.$v.email.email && this.$v.email.$error) {
         return "email format is : aaa@aa.aa";
       } else if (!this.$v.email.required && this.$v.email.$error) {
         return "email is required";
       } else {
         return "";
       }
-    },
+    }
   }
 };
 </script>

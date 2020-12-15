@@ -13,12 +13,12 @@ import {
   maxLength,
   required,
   minLength,
-  email,
+  email
 } from "vuelidate/lib/validators";
 import Form from './Form.vue'
 
 export default {
-  data() {
+  data () {
     return {
       name: "",
       email: "",
@@ -28,20 +28,20 @@ export default {
   validations: {
     name: {
       maxLength: maxLength(250),
-      minLength: minLength(2),
+      minLength: minLength(2)
     },
     username: {
       maxLength: maxLength(30),
-      required,
+      required
     },
     email: {
       email,
       maxLength: maxLength(250),
-      required,
-    },
+      required
+    }
   },
   computed: {
-    nameError() {
+    nameError () {
       if (!this.$v.name.maxLength && this.$v.username.$error) {
         return "Name max length - 250 symbols";
       } else if (!this.$v.name.minLength && this.$v.username.$error) {
@@ -50,7 +50,7 @@ export default {
         return "";
       }
     },
-    userNameError() {
+    userNameError () {
       if (!this.$v.username.maxLength && this.$v.username.$error) {
         return "username max length - 30 symbols";
       } else if (!this.$v.username.required && this.$v.username.$error) {
@@ -59,32 +59,31 @@ export default {
         return "";
       }
     },
-    emailError() {
+    emailError () {
       if (!this.$v.email.maxLength && this.$v.email.$error) {
         return "username max length - 250 symbols";
-      }
-      else if (!this.$v.email.email && this.$v.email.$error) {
+      } else if (!this.$v.email.email && this.$v.email.$error) {
         return "email format is : aaa@aa.aa";
       } else if (!this.$v.email.required && this.$v.email.$error) {
         return "email is required";
       } else {
         return "";
       }
-    },
+    }
   },
   components: {
     Form
   },
   methods: {
     ...mapActions("usersInfo", ["createUser"]),
-    submitCreate(payload) {
+    submitCreate (payload) {
       const result = this.createUser(payload);
 
       if (result) {
         this.$bvToast.toast(`New user is successfully created`, {
           title: "Success",
           autoHideDelay: 1000,
-          appendToast: true,
+          appendToast: true
         });
 
         this.handleCloseModal()
@@ -92,7 +91,7 @@ export default {
         this.$bvToast.toast(`Failure in creating`, {
           title: "Failure",
           autoHideDelay: 1000,
-          appendToast: true,
+          appendToast: true
         });
       }
     },

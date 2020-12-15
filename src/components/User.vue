@@ -31,10 +31,6 @@ export default {
       required: true
     }
   },
-
-  // computed: {
-  //  ...mapState('usersInfo', ['list', 'fetching'])
-  // },
   methods: {
     ...mapActions('usersInfo', ['deleteUser']),
 
@@ -48,10 +44,10 @@ export default {
           appendToast: true
         })
       } else {
-          this.$bvToast.toast(`Failure in deleting`, {
+        this.$bvToast.toast(`Failure in deleting`, {
           title: "Failure",
           autoHideDelay: 1000,
-          appendToast: true,
+          appendToast: true
         });
       }
     },

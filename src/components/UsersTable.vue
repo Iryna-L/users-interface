@@ -39,7 +39,7 @@ export default {
   },
 
   computed: {
-   ...mapState('usersInfo', ['list', 'fetching'])
+    ...mapState('usersInfo', ['list', 'fetching'])
   },
   methods: {
     ...mapActions('usersInfo', ['getUsers']),
