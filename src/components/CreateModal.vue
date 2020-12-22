@@ -46,18 +46,16 @@ export default {
         return "Name max length - 250 symbols";
       } else if (!this.$v.name.minLength && this.$v.username.$error) {
         return "Name min length - 2 symbols";
-      } else {
-        return "";
       }
+      return ""
     },
     userNameError () {
       if (!this.$v.username.maxLength && this.$v.username.$error) {
         return "username max length - 30 symbols";
       } else if (!this.$v.username.required && this.$v.username.$error) {
         return "username is required";
-      } else {
-        return "";
       }
+      return ""
     },
     emailError () {
       if (!this.$v.email.maxLength && this.$v.email.$error) {
@@ -66,9 +64,8 @@ export default {
         return "email format is : aaa@aa.aa";
       } else if (!this.$v.email.required && this.$v.email.$error) {
         return "email is required";
-      } else {
-        return "";
       }
+      return ""
     }
   },
   components: {

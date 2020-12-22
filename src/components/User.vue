@@ -20,11 +20,6 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'UserItem',
-  data () {
-    return {
-    }
-  },
-
   props: {
     user: {
       type: Object,

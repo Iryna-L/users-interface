@@ -1,8 +1,10 @@
 import http from '../../utils/http'
 
-const state = {
-  list: [],
-  fetching: false
+const state = () => {
+  return {
+    list: [],
+    fetching: false
+  }
 }
 
 const mutations = {

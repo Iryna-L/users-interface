@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Users</h1>
+    <div v-show="fetching">
+      <b-spinner variant="success" label="Spinning"></b-spinner>
+    </div>
     <div v-show="!fetching">
       <div>
         <b-button id="show-btn" @click="$bvModal.show('bv-modal-create')" variant="outline-primary">Create new user</b-button>
@@ -12,9 +15,6 @@
       </div>
       <create-modal />
       <edit-modal v-if="editableUser" :user="editableUser" />
-    </div>
-    <div v-show="fetching">
-      <b-spinner variant="success" label="Spinning"></b-spinner>
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
       this.editableUser = user
     }
   },
-  mounted () {
+  created () {
     this.getUsers()
   }
 }

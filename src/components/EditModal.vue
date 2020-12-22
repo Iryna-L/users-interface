@@ -49,7 +49,7 @@ export default {
       default: () => {}
     }
   },
-  mounted () {
+  created () {
     this.name = this.user.name
     this.email = this.user.email
     this.username = this.user.username
